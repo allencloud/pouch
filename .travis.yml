@@ -22,3 +22,7 @@ script:
   # PATH is not set under sudo, then we set up path mannually.
   # Ref https://unix.stackexchange.com/questions/83191/how-to-make-sudo-preserve-path
   - sudo env PATH=$PATH hack/make.sh check build unit-test integration-test
+
+after_success:
+  # Send coverage reports to Codecov.
+  - bash < (curl -s https://codecov.io/bash)
